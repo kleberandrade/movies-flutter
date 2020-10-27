@@ -1,4 +1,4 @@
-# Calculadora de pisos e revestimentos
+# Filmes (Movies)
 
 Aplicativo de lista de filmes utilizando a API do [TMDb](https://www.themoviedb.org/?language=pt-BR) criado para disciplina de Programação Mobile, criado por Kleber de Oliveira Andrade
 
