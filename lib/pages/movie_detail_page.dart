@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:movies/controllers/movie_detail_controller.dart';
 import 'package:movies/widgets/centered_message.dart';
 import 'package:movies/widgets/centered_progress.dart';
