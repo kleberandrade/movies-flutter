@@ -1,5 +1,9 @@
 import 'dart:convert';
 
+import 'production_company_model.dart';
+import 'production_country_model.dart';
+import 'spoken_language_model.dart';
+
 class MovieDetailModel {
   final bool adult;
   final String backdropPath;
@@ -15,11 +19,11 @@ class MovieDetailModel {
   final double popularity;
   final String posterPath;
   final List<ProductionCompany> productionCompanies;
-  final List<ProductionCountry> productionCountries;
+  final List<ProductionCountryModel> productionCountries;
   final DateTime releaseDate;
   final int revenue;
   final int runtime;
-  final List<SpokenLanguage> spokenLanguages;
+  final List<SpokenLanguageModel> spokenLanguages;
   final String status;
   final String tagline;
   final String title;
@@ -78,14 +82,14 @@ class MovieDetailModel {
         productionCompanies: List<ProductionCompany>.from(
             json["production_companies"]
                 .map((x) => ProductionCompany.fromMap(x))),
-        productionCountries: List<ProductionCountry>.from(
+        productionCountries: List<ProductionCountryModel>.from(
             json["production_countries"]
-                .map((x) => ProductionCountry.fromMap(x))),
+                .map((x) => ProductionCountryModel.fromMap(x))),
         releaseDate: DateTime.parse(json["release_date"]),
         revenue: json["revenue"],
         runtime: json["runtime"],
-        spokenLanguages: List<SpokenLanguage>.from(
-            json["spoken_languages"].map((x) => SpokenLanguage.fromMap(x))),
+        spokenLanguages: List<SpokenLanguageModel>.from(json["spoken_languages"]
+            .map((x) => SpokenLanguageModel.fromMap(x))),
         status: json["status"],
         tagline: json["tagline"],
         title: json["title"],
@@ -147,91 +151,6 @@ class Genre {
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "name": name,
-      };
-}
-
-class ProductionCompany {
-  ProductionCompany({
-    this.id,
-    this.logoPath,
-    this.name,
-    this.originCountry,
-  });
-
-  final int id;
-  final String logoPath;
-  final String name;
-  final String originCountry;
-
-  factory ProductionCompany.fromJson(String str) =>
-      ProductionCompany.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductionCompany.fromMap(Map<String, dynamic> json) =>
-      ProductionCompany(
-        id: json["id"],
-        logoPath: json["logo_path"] == null ? null : json["logo_path"],
-        name: json["name"],
-        originCountry: json["origin_country"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "logo_path": logoPath == null ? null : logoPath,
-        "name": name,
-        "origin_country": originCountry,
-      };
-}
-
-class ProductionCountry {
-  ProductionCountry({
-    this.iso31661,
-    this.name,
-  });
-
-  final String iso31661;
-  final String name;
-
-  factory ProductionCountry.fromJson(String str) =>
-      ProductionCountry.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductionCountry.fromMap(Map<String, dynamic> json) =>
-      ProductionCountry(
-        iso31661: json["iso_3166_1"],
-        name: json["name"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "iso_3166_1": iso31661,
-        "name": name,
-      };
-}
-
-class SpokenLanguage {
-  SpokenLanguage({
-    this.iso6391,
-    this.name,
-  });
-
-  final String iso6391;
-  final String name;
-
-  factory SpokenLanguage.fromJson(String str) =>
-      SpokenLanguage.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory SpokenLanguage.fromMap(Map<String, dynamic> json) => SpokenLanguage(
-        iso6391: json["iso_639_1"],
-        name: json["name"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "iso_639_1": iso6391,
         "name": name,
       };
 }

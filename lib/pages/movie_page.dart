@@ -20,11 +20,11 @@ class _MoviePageState extends State<MoviePage> {
   @override
   void initState() {
     super.initState();
-    _scrollInitListener();
+    _initScrollListener();
     _initialize();
   }
 
-  _scrollInitListener() {
+  _initScrollListener() {
     _scrollController.addListener(() async {
       if (_scrollController.offset >=
           _scrollController.position.maxScrollExtent) {
