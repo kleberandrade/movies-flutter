@@ -4,7 +4,6 @@ import 'movie_detail_page.dart';
 import '../widgets/centered_message.dart';
 import '../widgets/centered_progress.dart';
 import '../widgets/movie_card.dart';
-
 import '../controllers/movie_controller.dart';
 
 class MoviePage extends StatefulWidget {

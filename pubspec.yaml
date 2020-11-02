@@ -1,7 +1,6 @@
 name: movies
 description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.devversion: 1.0.0+1
-
+publish_to: 'none' 
 environment:
   sdk: ">=2.7.0 <3.0.0"
 

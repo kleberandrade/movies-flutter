@@ -5,9 +5,9 @@ Aplicativo de lista de filmes utilizando a API do [TMDb](https://www.themoviedb.
 Tutorial de criação deste app: clique aqui
 
 <p align="center">
-    <img src="" width="250"/>
-    <img src="" width="250"/>
-    <img src="" width="250"/>
+    <img src="https://miro.medium.com/max/334/1*QWNFydDZqp2Y12UDsRROHQ.png" width="250"/>
+    <img src="https://miro.medium.com/max/334/1*zk7ckxu63R3zKAGdUdUAbg.png" width="250"/>
+    <img src="https://miro.medium.com/max/334/1*SpoH2wRV3jNAuCk1Hz4EzQ.png" width="250"/>
 </p>
 
 ## Como clonar o projeto
