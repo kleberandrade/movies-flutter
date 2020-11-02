@@ -1,6 +1,11 @@
 import 'dart:convert';
 
 class ProductionCompanyModel {
+  final int id;
+  final String logoPath;
+  final String name;
+  final String originCountry;
+
   ProductionCompanyModel({
     this.id,
     this.logoPath,
@@ -8,15 +13,8 @@ class ProductionCompanyModel {
     this.originCountry,
   });
 
-  final int id;
-  final String logoPath;
-  final String name;
-  final String originCountry;
-
   factory ProductionCompanyModel.fromJson(String str) =>
       ProductionCompanyModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
 
   factory ProductionCompanyModel.fromMap(Map<String, dynamic> json) =>
       ProductionCompanyModel(
@@ -25,11 +23,4 @@ class ProductionCompanyModel {
         name: json["name"],
         originCountry: json["origin_country"],
       );
-
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "logo_path": logoPath == null ? null : logoPath,
-        "name": name,
-        "origin_country": originCountry,
-      };
 }

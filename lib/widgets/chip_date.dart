@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../core/constants.dart';
+
 class ChipDate extends StatelessWidget {
   final DateTime date;
   final Color color;
@@ -10,7 +12,7 @@ class ChipDate extends StatelessWidget {
     Key key,
     @required this.date,
     this.color = Colors.red,
-    this.dateFormat = 'dd/MM/yyyy',
+    this.dateFormat = kDateFormat,
   }) : super(key: key);
 
   @override

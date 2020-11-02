@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies/core/constants.dart';
-import 'package:movies/pages/movie_detail_page.dart';
-import 'package:movies/widgets/centered_message.dart';
-import 'package:movies/widgets/centered_progress.dart';
-import 'package:movies/widgets/movie_card.dart';
+import '../core/constants.dart';
+import 'movie_detail_page.dart';
+import '../widgets/centered_message.dart';
+import '../widgets/centered_progress.dart';
+import '../widgets/movie_card.dart';
 
 import '../controllers/movie_controller.dart';
 

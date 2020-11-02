@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies/controllers/movie_detail_controller.dart';
-import 'package:movies/widgets/centered_message.dart';
-import 'package:movies/widgets/centered_progress.dart';
-import 'package:movies/widgets/chip_date.dart';
-import 'package:movies/widgets/rate.dart';
+
+import '../controllers/movie_detail_controller.dart';
+import '../widgets/centered_message.dart';
+import '../widgets/centered_progress.dart';
+import '../widgets/chip_date.dart';
+import '../widgets/rate.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final int movieId;
@@ -45,7 +46,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
   _buildAppBar() {
     return AppBar(
-      title: Text(_controller.movieDetail?.title ?? 'Carregando...'),
+      title: Text(_controller.movieDetail?.title ?? ''),
     );
   }
 

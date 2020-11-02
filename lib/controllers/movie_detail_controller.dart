@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies/models/movie_detail_model.dart';
+
 import '../errors/movie_error.dart';
+import '../models/movie_detail_model.dart';
 import '../repositories/movie_repository.dart';
 
 class MovieDetailController {

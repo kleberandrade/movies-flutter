@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies/models/movie_model.dart';
+
 import '../errors/movie_error.dart';
+import '../models/movie_model.dart';
 import '../models/movie_response_model.dart';
 import '../repositories/movie_repository.dart';
 
@@ -32,6 +33,7 @@ class MovieController {
         }
       },
     );
+
     return result;
   }
 }

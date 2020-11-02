@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:movies/models/movie_detail_model.dart';
 
-import '../core/constants.dart';
+import '../core/api_.dart';
 import '../errors/movie_error.dart';
+import '../models/movie_detail_model.dart';
 import '../models/movie_response_model.dart';
 
 class MovieRepository {
