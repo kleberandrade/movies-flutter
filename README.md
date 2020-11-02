@@ -2,7 +2,7 @@
 
 Aplicativo de lista de filmes utilizando a API do [TMDb](https://www.themoviedb.org/?language=pt-BR) criado para disciplina de Programação Mobile, criado por Kleber de Oliveira Andrade
 
-Tutorial de criação deste app: clique aqui
+Tutorial de criação deste app: [clique aqui](https://kleberandrade.medium.com/criando-um-aplicativo-em-flutter-para-consumir-uma-api-de-filmes-tmdb-2b5a9982bfcd)
 
 <p align="center">
     <img src="https://miro.medium.com/max/334/1*QWNFydDZqp2Y12UDsRROHQ.png" width="250"/>
