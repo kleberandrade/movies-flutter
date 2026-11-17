@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Além da órbita",
+    "overview": "Uma cartógrafa encontra um novo caminho ao observar o céu de uma estação distante.",
+    "release_date": "2023-01-12",
+    "vote_average": 7.0,
+    "runtime": 92,
+    "genres": [
+      {
+        "name": "Aventura"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 2,
+    "title": "O último farol",
+    "overview": "Um guardião e sua filha tentam acender um farol antes da chegada de uma tempestade.",
+    "release_date": "2024-02-12",
+    "vote_average": 7.1,
+    "runtime": 95,
+    "genres": [
+      {
+        "name": "Drama"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 3,
+    "title": "Jardim de domingo",
+    "overview": "Vizinhos transformam um terreno esquecido em um lugar de encontros e recomeços.",
+    "release_date": "2025-03-12",
+    "vote_average": 7.2,
+    "runtime": 98,
+    "genres": [
+      {
+        "name": "Comédia"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 4,
+    "title": "Entre montanhas",
+    "overview": "Uma cartógrafa encontra um novo caminho ao observar o céu de uma estação distante.",
+    "release_date": "2023-04-12",
+    "vote_average": 7.3,
+    "runtime": 101,
+    "genres": [
+      {
+        "name": "Aventura"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 5,
+    "title": "Cidade em movimento",
+    "overview": "Um guardião e sua filha tentam acender um farol antes da chegada de uma tempestade.",
+    "release_date": "2024-05-12",
+    "vote_average": 7.4,
+    "runtime": 104,
+    "genres": [
+      {
+        "name": "Drama"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 6,
+    "title": "Cartas do amanhã",
+    "overview": "Vizinhos transformam um terreno esquecido em um lugar de encontros e recomeços.",
+    "release_date": "2025-06-12",
+    "vote_average": 7.5,
+    "runtime": 107,
+    "genres": [
+      {
+        "name": "Comédia"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 7,
+    "title": "Maré de inverno",
+    "overview": "Uma cartógrafa encontra um novo caminho ao observar o céu de uma estação distante.",
+    "release_date": "2023-07-12",
+    "vote_average": 7.6,
+    "runtime": 110,
+    "genres": [
+      {
+        "name": "Aventura"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 8,
+    "title": "A casa das estrelas",
+    "overview": "Um guardião e sua filha tentam acender um farol antes da chegada de uma tempestade.",
+    "release_date": "2024-08-12",
+    "vote_average": 7.7,
+    "runtime": 113,
+    "genres": [
+      {
+        "name": "Drama"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 9,
+    "title": "Pequenas viagens",
+    "overview": "Vizinhos transformam um terreno esquecido em um lugar de encontros e recomeços.",
+    "release_date": "2025-09-12",
+    "vote_average": 7.8,
+    "runtime": 116,
+    "genres": [
+      {
+        "name": "Comédia"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 10,
+    "title": "Depois da chuva",
+    "overview": "Uma cartógrafa encontra um novo caminho ao observar o céu de uma estação distante.",
+    "release_date": "2023-01-12",
+    "vote_average": 7.0,
+    "runtime": 119,
+    "genres": [
+      {
+        "name": "Aventura"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 11,
+    "title": "O som do silêncio",
+    "overview": "Um guardião e sua filha tentam acender um farol antes da chegada de uma tempestade.",
+    "release_date": "2024-02-12",
+    "vote_average": 7.1,
+    "runtime": 122,
+    "genres": [
+      {
+        "name": "Drama"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  },
+  {
+    "id": 12,
+    "title": "Horizonte azul",
+    "overview": "Vizinhos transformam um terreno esquecido em um lugar de encontros e recomeços.",
+    "release_date": "2025-03-12",
+    "vote_average": 7.2,
+    "runtime": 125,
+    "genres": [
+      {
+        "name": "Comédia"
+      }
+    ],
+    "original_language": "pt",
+    "tagline": "Toda história abre um novo caminho."
+  }
+]

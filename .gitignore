@@ -32,10 +32,18 @@
 /build/
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# Local credentials and generated quality reports
+.env
+.env.*
+!.env.example
+config/*.json
+!config/example.json
+/coverage/
+/.metrics/
