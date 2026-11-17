@@ -17,3 +17,13 @@ Date: 2026-11-17. Scope: `kleberandrade/movies-flutter` only.
 - Inspected the actual compiled Web app in Chrome at desktop and 390×844: search, details/back, empty/clear, density, second page and credits. Fixed metadata roles observed there and enabled Web semantics at startup. Saved real screenshots.
 - Published the Portuguese Medium revision, verified the publication alert and new public section, and preserved original notes under an explicit 2020 archive heading. No subscriber messages were sent.
 - Updated and read back the GitHub English description plus nine relevant topics. Rewrote current setup/architecture/validation docs in English and preserved the original MIT text in LICENSE.
+
+## Follow-up: packages and full Medium lesson
+
+- Read the user request to refresh the entire article, its cover/images/code and five final exercises. Consulted pub outdated, current package release notes, the official Flutter archive/release notes and Material migration guide.
+- Installed Flutter 3.50.0 / Dart 3.14.0 in an exclusive project cache, preserving global SDKs. Updated all direct dependencies and resolvable transitives, migrated Material imports, committed a machine-readable audit and documented the three upstream bounds without overrides.
+- Reran all 23 tests, analyzer, Web release, Android ARM64 and iOS simulator builds. Android reproduced an old-Gradle rejection; migrated to the official current host template and rebuilt successfully.
+- Added and executed the complete pure-Dart parsing example used in the lesson; included it in formatting and CI checks.
+- Generated a new editorial cover, removed an unintended logo in a targeted edit, and saved the final image and prompts in docs/media. Captured the actual updated Web catalog and details at desktop/mobile sizes.
+- Replaced the Medium body with a continuous Portuguese lesson, current package versions, code explanations, source references and exactly five final exercises. Preserved original resources in the linked classroom archive. Inserted the new cover and two real screenshots, with descriptions distinguishing illustration from actual app capture. Browser extension upload failed; used the native file picker instead, without changing browser permissions.
+- Published the full revision and opened the public story again. Verified current package text, three images loading with alternative descriptions, the new cover as the sharing image, no insertion markers and exactly five final exercise items. Saved publication proof outside Git because it includes browser-account UI.

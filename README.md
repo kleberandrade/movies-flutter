@@ -1,7 +1,7 @@
 # Movies
 
-[![Flutter 3.41.9](https://img.shields.io/badge/Flutter-3.41.9-02569B?logo=flutter)](https://flutter.dev)
-[![Dart 3.11](https://img.shields.io/badge/Dart-3.11-0175C2?logo=dart)](pubspec.yaml)
+[![Flutter 3.50.0](https://img.shields.io/badge/Flutter-3.50.0-02569B?logo=flutter)](https://flutter.dev)
+[![Dart 3.14](https://img.shields.io/badge/Dart-3.14-0175C2?logo=dart)](pubspec.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Flutter](https://github.com/kleberandrade/movies-flutter/actions/workflows/flutter.yml/badge.svg?branch=main)](https://github.com/kleberandrade/movies-flutter/actions/workflows/flutter.yml)
 
@@ -13,14 +13,17 @@ The default **sample mode** uses twelve original fictional movies, ratings and l
 
 ## Requirements and setup
 
-Tested toolchain: **Flutter 3.41.9 / Dart 3.11.5** (`.fvmrc`). Install that Flutter release; FVM is optional. Chrome is required for Web development. Android needs an SDK/JDK and accepted licenses; iOS needs macOS and Xcode. Do not accept terms on behalf of another person.
+Tested toolchain: **Flutter 3.50.0 / Dart 3.14.5** (`.fvmrc`). Install that Flutter release; FVM is optional. Chrome is required for Web development. Android needs an SDK/JDK and accepted licenses; iOS needs macOS and Xcode. Do not accept terms on behalf of another person.
 
 ```sh
 git clone https://github.com/kleberandrade/movies-flutter.git
 cd movies-flutter
+flutter --version
 flutter pub get --enforce-lockfile
 flutter run -d chrome
 ```
+
+If Flutter 3.50.0 is managed with FVM, use `fvm install 3.50.0`, `fvm use 3.50.0`, and prefix Flutter/Dart commands with `fvm`. Alternatively, select a separate SDK in this project's terminal. The migration does not require replacing a global SDK used by other projects.
 
 Try searching `farol`, open **O último farol**, return to the catalog, clear the search and use **Carregar mais filmes**. Search `xyz` to see the empty state. The grid-size control changes card density. **Sobre e créditos** explains sample data and TMDB attribution.
 
@@ -43,18 +46,25 @@ External build configuration is **not secret storage**: tokens embedded in a bro
 
 ```sh
 flutter pub get --enforce-lockfile
-dart format --output=none --set-exit-if-changed lib test
+dart format --output=none --set-exit-if-changed lib test example
 flutter analyze --no-pub
-flutter test --no-pub --coverage
+flutter test --no-pub --concurrency=1 --coverage
+dart run example/parse_movie.dart
 flutter build web --no-pub --release --no-web-resources-cdn
 python3 -m http.server 8784 --directory build/web --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8784`. The Web build defaults to sample mode and bundles its renderer resources. The build needs package/Flutter artifacts downloaded during setup; it is not an offline dependency installation. `pubspec.lock` is committed and CI pins Flutter 3.41.9, runs formatting/analyzer/tests and builds the same Web artifact on `main` pushes and pull requests. CI does not deploy or publish packages.
+Open `http://127.0.0.1:8784`. The Web build defaults to sample mode and bundles its renderer resources. The build needs package/Flutter artifacts downloaded during setup; it is not an offline dependency installation. `pubspec.lock` is committed and CI pins Flutter 3.50.0, runs formatting/analyzer/tests and builds the same Web artifact on `main` pushes and pull requests. CI does not deploy or publish packages.
 
 Tests use local JSON and an injected Dio adapter: parsing and malformed data, pagination/search, auth/request parameters, HTTP errors/timeouts, stale responses, duplicate IDs, retry, disposal, widget navigation, empty states and large text. They do not require or prove a live TMDB integration. Coverage output is generated locally; no coverage percentage is advertised.
 
 Native commands: `flutter build apk --debug` and `flutter build ios --simulator --debug`. Store signing and physical-device validation are outside this classroom migration. See [verified validation results and limits](docs/validation.md).
+
+## Current dependencies
+
+Direct packages: Dio **5.11.1**, flutter_svg **2.4.0**, cupertino_icons **2.0.0**, material_ui **1.11.1** and flutter_lints **6.0.0**; Flutter and flutter_test come from SDK **3.50.0**. All direct packages are current. Three transitive versions remain limited by upstream constraints; see the [dependency audit](docs/dependencies.md). No dependency overrides are used.
+
+The [Portuguese tutorial source](docs/medium-tutorial.pt-BR.html) contains current snippets and exactly five final exercises. Its complete parsing example is executable with `dart run example/parse_movie.dart`.
 
 ## Project map
 

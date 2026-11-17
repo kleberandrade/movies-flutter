@@ -1,0 +1,64 @@
+{
+  "packages": [
+    {
+      "package": "material_color_utilities",
+      "kind": "transitive",
+      "isDiscontinued": false,
+      "replacedBy": null,
+      "isCurrentRetracted": false,
+      "isCurrentAffectedByAdvisory": false,
+      "current": {
+        "version": "0.13.0"
+      },
+      "upgradable": {
+        "version": "0.13.0"
+      },
+      "resolvable": {
+        "version": "0.13.0"
+      },
+      "latest": {
+        "version": "0.13.1"
+      }
+    },
+    {
+      "package": "test_api",
+      "kind": "transitive",
+      "isDiscontinued": false,
+      "replacedBy": null,
+      "isCurrentRetracted": false,
+      "isCurrentAffectedByAdvisory": false,
+      "current": {
+        "version": "0.7.14"
+      },
+      "upgradable": {
+        "version": "0.7.14"
+      },
+      "resolvable": {
+        "version": "0.7.14"
+      },
+      "latest": {
+        "version": "0.7.15"
+      }
+    },
+    {
+      "package": "xml",
+      "kind": "transitive",
+      "isDiscontinued": false,
+      "replacedBy": null,
+      "isCurrentRetracted": false,
+      "isCurrentAffectedByAdvisory": false,
+      "current": {
+        "version": "7.0.1"
+      },
+      "upgradable": {
+        "version": "7.0.1"
+      },
+      "resolvable": {
+        "version": "7.0.1"
+      },
+      "latest": {
+        "version": "7.1.0"
+      }
+    }
+  ]
+}

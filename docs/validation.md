@@ -1,5 +1,17 @@
 # Verified validation
 
+## Follow-up: current dependencies and complete tutorial
+
+The current project is verified with **Flutter 3.50.0 / Dart 3.14.0** in a project-specific SDK cache. All direct hosted packages were upgraded to current stable releases; three upstream transitive limits are documented in [dependencies.md](dependencies.md). The old results below remain historical evidence for the initial migration.
+
+Current checks passed: locked dependency resolution, analyzer without issues, **23 behavioral tests**, the executable `example/parse_movie.dart`, release Web build with local renderer resources, debug Android ARM64 APK, and debug iOS simulator build. Android required migrating to the Flutter 3.50 template (Gradle 9.5.0 / AGP 9.3.1 / Kotlin 2.4.20); the first build correctly rejected old Gradle 8.14 and no validation bypass was used.
+
+The compiled current Web app was opened in the in-app Chromium browser, using local sample data. Search `farol`, detail navigation, back, clear, density and a 390 × 844 viewport were verified, and screenshots refreshed. These are browser screenshots, not device tests. The article uses an explicitly described AI editorial cover and two actual updated screenshots with alternative descriptions.
+
+No new live TMDB integration or physical-device test is claimed. crapper/dryer/mutator still do not support Dart.
+
+## Initial modernization results (Flutter 3.41.9)
+
 Environment observed on 2026-11-17: macOS 27.2.1 arm64, Flutter 3.41.9, Dart 3.11.5, Chrome, Xcode 27.2. No global SDK modifications, license acceptance, package publication or deployment.
 
 ## Completed
