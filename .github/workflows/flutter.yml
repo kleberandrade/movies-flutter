@@ -1,0 +1,28 @@
+name: Flutter
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.9'
+          channel: stable
+          cache: true
+      - run: flutter pub get --enforce-lockfile
+      - run: dart format --output=none --set-exit-if-changed lib test
+      - run: flutter analyze --no-pub
+      - run: flutter test --no-pub --coverage
+      - run: flutter build web --no-pub --release --no-web-resources-cdn
+      - uses: actions/upload-artifact@v4
+        with:
+          name: movies-web-demo
+          path: build/web
+          retention-days: 7

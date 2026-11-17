@@ -1,1 +1,4 @@
 #include "Generated.xcconfig"
+// Xcode 27 lipo rejects multi-architecture verification (flutter/flutter#188461).
+// Build a debug simulator for its host architecture; device/release is unchanged.
+ARCHS[sdk=iphonesimulator*] = $(NATIVE_ARCH_ACTUAL)
