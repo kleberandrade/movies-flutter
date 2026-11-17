@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import '../data/movie_repository.dart';
 import '../domain/movie.dart';
 

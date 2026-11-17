@@ -47,3 +47,7 @@ config/*.json
 !config/example.json
 /coverage/
 /.metrics/
+
+/android/build/
+
+.fvm/

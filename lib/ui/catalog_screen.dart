@@ -1,5 +1,7 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+
+import 'package:material_ui/material_ui.dart';
+
 import '../data/movie_repository.dart';
 import '../domain/movie.dart';
 import '../state/catalog_controller.dart';

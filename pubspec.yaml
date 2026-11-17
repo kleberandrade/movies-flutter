@@ -3,14 +3,15 @@ description: A classroom movie explorer with TMDB integration and an offline sam
 publish_to: none
 version: 2.0.0+2
 environment:
-  sdk: '>=3.11.0 <4.0.0'
-  flutter: '>=3.41.0'
+  sdk: '>=3.14.0 <4.0.0'
+  flutter: '>=3.50.0'
 dependencies:
   flutter:
     sdk: flutter
   dio: ^5.11.1
-  flutter_svg: ^2.3.4
-  cupertino_icons: ^1.0.9
+  flutter_svg: ^2.4.0
+  cupertino_icons: ^2.0.0
+  material_ui: ^1.11.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

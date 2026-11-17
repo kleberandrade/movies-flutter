@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
+
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movies/main.dart';
 import 'package:movies/data/movie_repository.dart';
@@ -103,9 +104,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(
-            context,
-          ).copyWith(textScaler: TextScaler.linear(2)),
+          data: MediaQuery.of(context)
+              .copyWith(textScaler: TextScaler.linear(2)),
           child: child!,
         ),
         home: MoviesApp(repository: fixtureRepository()),
