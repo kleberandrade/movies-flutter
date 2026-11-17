@@ -14,13 +14,13 @@ flutter --version
 flutter pub get --enforce-lockfile
 flutter run -d chrome</pre>
 
-<p>O modo padrão é uma demonstração local: doze filmes, notas e ilustrações fictícios em <code>assets/fixtures/movies.json</code>. Não há consulta autenticada ao TMDB nessa experiência. Assim, a turma pode estudar navegação, busca e paginação sem criar conta, expor um token ou depender da disponibilidade da API.</p>
+<p>O modo padrão é uma demonstração local: doze filmes e notas fictícios em <code>assets/fixtures/movies.json</code>, cada um com seu pôster SVG original em <code>assets/posters/</code>. As imagens fazem parte do aplicativo e não precisam de chave nem de internet. Não há consulta autenticada ao TMDB nessa experiência. Assim, a turma pode estudar navegação, busca e paginação sem criar conta, expor um token ou depender da disponibilidade da API.</p>
 
 <p><strong>Experimente:</strong> busque “farol”, abra O último farol e confira os detalhes. Volte, limpe o campo, altere a densidade dos cartões e toque em Carregar mais filmes. Pesquise “xyz” para observar a mensagem de lista vazia. Depois abra Sobre e créditos e confira a identificação dos dados de exemplo.</p>
 
-<figure><img src="screenshots/catalog-desktop.jpg" alt="Captura real do catálogo Web Movies com filmes fictícios, busca e grade responsiva."></figure>
+<figure><img src="screenshots/catalog-desktop.jpg" alt="Captura real do catálogo Web Movies com pôsteres SVG locais: órbita espacial, farol, jardim e montanhas nos cards dos filmes fictícios. Busca, aviso de modo de exemplo e notas continuam visíveis. As imagens estão incluídas no aplicativo e não dependem do TMDB."></figure>
 
-<p>O catálogo acima é uma captura real do aplicativo compilado para Web. Os filmes são exemplos locais, e a ilustração usada quando não há pôster é identificada como tal.</p>
+<p>O catálogo acima é uma captura real do aplicativo compilado para Web. Os filmes e seus pôsteres são exemplos locais. Cada cartão agora exibe uma ilustração vetorial própria, também usada nos detalhes; não são pôsteres de filmes reais do TMDB.</p>
 
 <h2>2. Entenda as versões e o papel de cada pacote</h2>
 
@@ -41,8 +41,16 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0</pre>
 
-<p><strong>dio 5.11.1</strong> faz as requisições HTTPS e permite injetar um adaptador nos testes. <strong>flutter_svg 2.4.0</strong> desenha o logotipo oficial usado nos créditos. <strong>cupertino_icons 2.0.0</strong> fornece os ícones dos controles adaptativos. <strong>material_ui 1.11.1</strong> contém os componentes Material atuais. <strong>flutter_lints 6.0.0</strong> orienta a análise estática; <strong>flutter_test</strong> acompanha o SDK Flutter 3.50.0.</p>
+<p><strong>dio 5.11.1</strong> faz as requisições HTTPS e permite injetar um adaptador nos testes. <strong>flutter_svg 2.4.0</strong> desenha os pôsteres SVG locais e o logotipo oficial usado nos créditos. <strong>cupertino_icons 2.0.0</strong> fornece os ícones dos controles adaptativos. <strong>material_ui 1.11.1</strong> contém os componentes Material atuais. <strong>flutter_lints 6.0.0</strong> orienta a análise estática; <strong>flutter_test</strong> acompanha o SDK Flutter 3.50.0.</p>
 
+<p>Para incluir os arquivos no aplicativo, este trecho fica no <code>pubspec.yaml</code>, no nível de <code>dependencies</code>, e não dentro dele. Declare o diretório e execute novamente <code>flutter pub get --enforce-lockfile</code>:</p>
+<pre>flutter:
+  uses-material-design: true
+  assets:
+    - assets/fixtures/movies.json
+    - assets/posters/
+    - assets/tmdb-logo.svg</pre>
+<p>Por exemplo, O último farol usa <code>"poster_asset": "assets/posters/o-ultimo-farol.svg"</code> na fixture. Os SVGs não referenciam recursos externos. Na Web, isso dispensa internet para os pôsteres quando o build está disponível localmente; não adiciona cache de service worker para uma primeira visita a um site remoto sem conexão.</p>
 <p>No Flutter 3.50, a biblioteca de design Material foi separada do núcleo. Os widgets deste projeto importam:</p>
 
 <pre>import &#x27;package:material_ui/material_ui.dart&#x27;;</pre>
@@ -144,11 +152,11 @@ void main() {
 
 <p>A tela de catálogo usa uma grade responsiva e um botão de paginação explícito. TextField chama o início da busca; ListenableBuilder observa o controlador; os cartões navegam para DetailScreen passando o ID. Os detalhes têm sua própria consulta e uma nova tentativa independente quando ela falha.</p>
 
-<figure><img src="screenshots/detail-mobile.jpg" alt="Detalhes de O último farol no navegador em 390 por 844 pixels; filme fictício com ano, nota, duração, idioma e gênero."></figure>
+<figure><img src="screenshots/detail-mobile.jpg" alt="Captura real da Web em 390 por 844 pixels: detalhes de O último farol com seu pôster SVG local, um farol iluminando o mar sob a lua. O filme é identificado como exemplo fictício; ano 2024, nota 7,1, duração de 95 minutos, idioma português e gênero drama."></figure>
 
 <p>Captura real dos detalhes na Web em largura de celular. O rótulo EXEMPLO FICTÍCIO identifica a origem dos dados; ano, nota, duração, idioma e gênero são metadados de leitura, não caixas de seleção.</p>
 
-<p>Antes de pensar em efeitos visuais, confira quatro situações: a consulta ainda não terminou; terminou sem resultados; falhou; ou retornou dados. O indicador de carregamento tem descrição semântica. O vazio sugere outra busca. O erro oferece Tentar novamente. Pôster ausente ou com falha usa uma ilustração local identificada, sem ocultar o título do filme.</p>
+<p>Antes de pensar em efeitos visuais, confira quatro situações: a consulta ainda não terminou; terminou sem resultados; falhou; ou retornou dados. O indicador de carregamento tem descrição semântica. O vazio sugere outra busca. O erro oferece Tentar novamente. No modo de exemplo, <code>Movie.fromDemoJson</code> valida <code>poster_asset</code> no formato <code>assets/posters/nome-do-filme.svg</code>; <code>Movie.fromJson</code>, usado pelo TMDB, ignora esse campo local. O componente compartilhado <code>Poster</code> escolhe <code>SvgPicture.asset</code> para os exemplos e <code>Image.network</code> para os pôsteres reais. Se uma imagem estiver ausente ou falhar, a arte de reserva identificada continua preservando o título.</p>
 
 <p>Na revisão da interface, os testes reproduziram um overflow com texto a 200%; o cabeçalho e a altura da grade foram ajustados. A inspeção real do navegador também mostrou metadados sendo anunciados como controles selecionáveis; eles foram substituídos por marcadores de texto. Acessibilidade envolve nomes, papéis e tamanho de texto, além de contraste e cor.</p>
 
@@ -181,7 +189,7 @@ dart run example/parse_movie.dart
 flutter build web --no-pub --release --no-web-resources-cdn
 python3 -m http.server 8784 --directory build/web --bind 127.0.0.1</pre>
 
-<p>Abra <code>http://127.0.0.1:8784</code>. A suíte tem 23 testes de parsing, serviço, estado e widgets: fixtures, parâmetros de autenticação e busca, HTTP 401/403/404/429/500, timeout, conexão, paginação, deduplicação, navegação, vazio, retry e texto ampliado. O exemplo do artigo também foi executado. Cobertura gerada não significa cobertura total; não anunciamos um percentual que não foi medido.</p>
+<p>Abra <code>http://127.0.0.1:8784</code>. A suíte tem 25 testes de parsing, serviço, estado e widgets: fixtures, parâmetros de autenticação e busca, HTTP 401/403/404/429/500, timeout, conexão, paginação, deduplicação, navegação, vazio, retry, texto ampliado e renderização dos doze pôsteres empacotados sem imagens de rede. O exemplo do artigo também foi executado. Cobertura gerada não significa cobertura total; não anunciamos um percentual que não foi medido.</p>
 
 <p>O CI repete instalação com lockfile, formatação, análise, testes e build Web com Flutter 3.50.0. Compilar um APK ou um aplicativo para simulador não equivale a testar em um telefone. O <a href="https://github.com/kleberandrade/movies-flutter/blob/main/docs/validation.md">registro de validação</a> separa resultados atuais, resultados históricos e verificações não realizadas.</p>
 

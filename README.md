@@ -9,11 +9,11 @@
 
 A Flutter classroom movie explorer by Kleber de Oliveira Andrade. Browse a responsive catalog, search titles, load more results and open a movie's synopsis, year, score, runtime, genres and original language. The interface is in Portuguese.
 
-The default **sample mode** uses twelve original fictional movies, ratings and local illustrations. It works without a key or TMDB requests. These are teaching fixtures, not real movies or API results.
+The default **sample mode** uses twelve original fictional movies, ratings and bundled SVG posters. It works without a key or TMDB requests. Each movie has its own poster in `assets/posters/`, rendered from the asset bundle in cards and details. These are teaching fixtures, not real movies or API results.
 
 ## Requirements and setup
 
-Tested toolchain: **Flutter 3.50.0 / Dart 3.14.5** (`.fvmrc`). Install that Flutter release; FVM is optional. Chrome is required for Web development. Android needs an SDK/JDK and accepted licenses; iOS needs macOS and Xcode. Do not accept terms on behalf of another person.
+Tested toolchain: **Flutter 3.50.0 / Dart 3.14.0** (`.fvmrc`). Install that Flutter release; FVM is optional. Chrome is required for Web development. Android needs an SDK/JDK and accepted licenses; iOS needs macOS and Xcode. Do not accept terms on behalf of another person.
 
 ```sh
 git clone https://github.com/kleberandrade/movies-flutter.git
@@ -72,7 +72,7 @@ The [Portuguese tutorial source](docs/medium-tutorial.pt-BR.html) contains curre
 - `lib/data`: TMDB transport, safe failures, repository contract and sample repository.
 - `lib/state`: catalog search/pagination ownership and stale-response protection.
 - `lib/ui`: catalog, details, reusable poster/error/credits components.
-- `assets/fixtures`: fictional sample catalog; `test`: deterministic behavior tests.
+- `assets/fixtures`: fictional sample catalog; `assets/posters`: twelve original local vector posters; `test`: deterministic behavior tests.
 - `android`, `ios`, `web`: Flutter platform scaffolds.
 
 The old Dart 2 constructors and controllers have been replaced; this is an application, not a published library. Migration rationale and glossary are in [architecture](docs/architecture.md). Implementation decisions and tool limitations are in the [work log](docs/work-log.md).

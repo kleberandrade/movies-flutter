@@ -27,3 +27,11 @@ Date: 2026-11-17. Scope: `kleberandrade/movies-flutter` only.
 - Generated a new editorial cover, removed an unintended logo in a targeted edit, and saved the final image and prompts in docs/media. Captured the actual updated Web catalog and details at desktop/mobile sizes.
 - Replaced the Medium body with a continuous Portuguese lesson, current package versions, code explanations, source references and exactly five final exercises. Preserved original resources in the linked classroom archive. Inserted the new cover and two real screenshots, with descriptions distinguishing illustration from actual app capture. Browser extension upload failed; used the native file picker instead, without changing browser permissions.
 - Published the full revision and opened the public story again. Verified current package text, three images loading with alternative descriptions, the new cover as the sharing image, no insertion markers and exactly five final exercise items. Saved publication proof outside Git because it includes browser-account UI.
+
+## Follow-up: local posters and refreshed captures
+
+- Read the shared project modernization standard now present under the Projects workspace. Confirmed sample JSON had no poster references; the UI correctly displayed its labeled fallback.
+- Added a widget regression before implementation and observed the expected failure: no SvgPicture for the first sample movie. Created twelve distinct original vector illustrations and registered their local directory in pubspec.yaml.
+- Added fixture-only poster parsing and validated its local namespace. Live TMDB parsing ignores this field; both catalog and details reuse the same Poster component, which preserves the existing image-error fallback.
+- All 25 tests, locked dependency resolution, analyzer and parsing example passed. Release Web and Android ARM64 debug builds passed; verified all twelve exact asset contents in both outputs. No packages or SDK changes were needed.
+- Inspected actual desktop/mobile rendering and refreshed four screenshots. Updated the lesson's explanation, asset declaration, sample field, test count and two uploaded screenshots, preserving its cover, identity and five final exercises. Publication verification is recorded in medium-update.pt-BR.md.

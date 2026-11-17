@@ -4,6 +4,17 @@ Artigo próprio: [Criando um aplicativo em Flutter para consumir uma API de Film
 
 Em 17/11/2026, a revisão completa substituiu o corpo antigo por uma aula contínua em português. O título, a autoria, a URL e a identidade `2b5a9982bfcd` foram preservados. Não foram enviados e-mails, newsletters nem mensagens a seguidores. A publicação anterior, que acrescentava uma atualização antes das notas históricas, foi substituída por esta edição integral.
 
+## Atualização posterior: pôsteres locais
+
+A edição seguinte, também em 17/11/2026, publicou os pôsteres SVG originais incluídos no aplicativo para todos os doze filmes fictícios. O texto explica `poster_asset`, a validação exclusiva de `Movie.fromDemoJson`, o uso de `SvgPicture.asset`, a declaração de `flutter.assets` e a diferença entre recursos locais e cache offline do navegador. O bloco novo foi configurado como YAML e conferido na página pública, preservando indentação e caminhos. A suíte atual tem **25 testes**.
+
+As quatro capturas do repositório foram refeitas a partir do build Web atual. Duas foram enviadas pelo seletor de arquivos do navegador integrado e publicadas no mesmo artigo, com novas descrições alternativas:
+
+- Catálogo: `1*8-LE89tP7SQN4DF8aTCB2Q.jpeg`.
+- Detalhes em **390 × 844**: `1*esqQfJBDDj2Zr0pjIa2gHg.jpeg`.
+
+Depois de **Save and publish**, a página pública foi recarregada. Foram confirmados os dois novos endereços de imagem com conteúdo carregado, o texto atualizado, as nove etapas, o bloco YAML e exatamente cinco itens na última seção didática. A capa editorial continua sendo `1*1l6GLys1GNrfGdNZ74yRxg.png`, inclusive em `og:image`. A prova visual desta publicação foi salva fora do Git em `medium-local-posters.jpg`. As seções abaixo registram a revisão integral anterior.
+
 ## Texto, código e versões
 
 A aula tem objetivos de aprendizagem, pré-requisitos e nove etapas: experimentar o aplicativo, compreender dependências, separar responsabilidades, validar JSON, injetar repositórios, controlar concorrência/paginação, apresentar estados acessíveis, configurar TMDB e executar verificações.

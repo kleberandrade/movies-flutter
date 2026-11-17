@@ -1,5 +1,13 @@
 # Verified validation
 
+## Follow-up: bundled sample posters
+
+The 12 fictional movies now have distinct original SVG posters bundled in `assets/posters/` (16,823 bytes total). A new widget regression first failed because no poster was rendered, then passed for every bundled image without a network `Image`. Fixture tests also verify unique existing poster files and matching catalog/detail paths. Boundary tests reject unsafe local paths; TMDB parsing ignores the fixture-only `poster_asset` field.
+
+Locked resolution, formatting, analyzer, **25 behavioral tests**, the executable parsing example, Web release and Android ARM64 debug builds passed. All 12 SVG contents were compared byte-for-byte with their entries in the Web build and Android APK. No dependency or toolchain changes were necessary. The README's incorrect Dart patch number was aligned with the actual SDK (3.14.0).
+
+Actual compiled Web cards and details were inspected at desktop and **390 × 844**, with no warning/error console entries in the mobile session. All four repository screenshots were refreshed. The demo uses no remote poster source; tests run with Flutter's test HTTP restrictions. A fully disconnected browser reload/service-worker cache and native-device execution were not tested. iOS was not rebuilt for this asset follow-up; its successful build below predates these poster changes.
+
 ## Follow-up: current dependencies and complete tutorial
 
 The current project is verified with **Flutter 3.50.0 / Dart 3.14.0** in a project-specific SDK cache. All direct hosted packages were upgraded to current stable releases; three upstream transitive limits are documented in [dependencies.md](dependencies.md). The old results below remain historical evidence for the initial migration.

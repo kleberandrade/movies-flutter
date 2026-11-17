@@ -9,3 +9,7 @@ Use case: illustration-story. Asset type: editorial cover for a Portuguese progr
 ## Final targeted edit prompt
 
 Remove only the blue Flutter emblem at the top center, replacing it with matching empty midnight navy background. Keep the title, subtitle, composition, typography, all other illustration objects, color palette, dimensions and lighting unchanged. The result must contain no company logos. Preserve text verbatim: Filmes com Flutter / Da API à interface, com testes.
+
+## Bundled fictional posters
+
+The twelve images in `../../assets/posters/` are original SVG geometry authored directly for this project, not bitmap image-generation output. Their mapping, local-only resources and license are documented in that directory. The four UI screenshots were refreshed after adding these posters; Medium now uses the new catalog and mobile-detail captures. The AI-generated editorial cover above is unchanged.
