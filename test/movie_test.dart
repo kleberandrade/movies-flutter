@@ -2,6 +2,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:movies/domain/movie.dart';
 
 void main() {
+  test('only demo parsing accepts safe local poster paths', () {
+    final json = {
+      'id': 1,
+      'title': 'Local',
+      'poster_asset': 'assets/posters/alem-da-orbita.svg',
+    };
+    expect(Movie.fromJson(json).posterAsset, isNull);
+    expect(Movie.fromDemoJson(json).posterAsset, json['poster_asset']);
+    expect(Movie.fromDemoJson(json).posterUrl, isNull);
+    for (final path in [
+      '../secret.svg',
+      'assets/posters/../secret.svg',
+      'https://example.com/poster.svg',
+      'assets/tmdb-logo.svg',
+      42,
+    ]) {
+      expect(
+        () => Movie.fromDemoJson({...json, 'poster_asset': path}),
+        throwsFormatException,
+      );
+    }
+  });
   test('zero total pages may only describe an empty result', () {
     expect(
       () => MoviePage.fromJson({

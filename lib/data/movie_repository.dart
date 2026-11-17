@@ -109,7 +109,7 @@ class DemoRepository implements MovieRepository {
     try {
       final data = jsonDecode(await _load());
       if (data is! List) throw const FormatException('Expected sample list');
-      return data.map((item) => Movie.fromJson(objectJson(item))).toList();
+      return data.map((item) => Movie.fromDemoJson(objectJson(item))).toList();
     } catch (_) {
       _cache = null;
       throw const MovieFailure('Não foi possível abrir os dados de exemplo.');

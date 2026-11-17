@@ -20,4 +20,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/fixtures/movies.json
+    - assets/posters/
     - assets/tmdb-logo.svg

@@ -48,6 +48,14 @@ void main() {
       );
       expect((await demo.catalog(query: 'missing')).movies, isEmpty);
       expect((await demo.detail(1)).runtime, 92);
+      final movies = [...first.movies, ...second.movies];
+      expect(movies.map((movie) => movie.posterAsset).toSet(), hasLength(12));
+      for (final movie in movies) {
+        expect(movie.posterUrl, isNull);
+        expect(movie.posterAsset, isNotNull);
+        expect(File(movie.posterAsset!).existsSync(), isTrue);
+        expect((await demo.detail(movie.id)).posterAsset, movie.posterAsset);
+      }
       await expectLater(demo.detail(99), throwsA(isA<MovieFailure>()));
     },
   );

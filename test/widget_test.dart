@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/main.dart';
 import 'package:movies/data/movie_repository.dart';
 import 'package:movies/domain/movie.dart';
@@ -118,6 +119,27 @@ void main() {
       scrollable: find.byType(Scrollable).first,
     );
     expect(tester.takeException(), isNull);
+  });
+  testWidgets('all demo posters render from bundled assets without HTTP', (
+    tester,
+  ) async {
+    final repository = fixtureRepository();
+    for (var id = 1; id <= 12; id++) {
+      final movie = await repository.detail(id);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: SizedBox(
+            width: 200,
+            child: Poster(key: ValueKey(id), movie: movie),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byType(SvgPicture), findsOneWidget, reason: movie.title);
+      expect(find.byType(Image), findsNothing, reason: 'No network poster');
+      expect(find.text('ILUSTRAÇÃO • SEM PÔSTER'), findsNothing);
+      expect(tester.takeException(), isNull, reason: movie.title);
+    }
   });
   testWidgets('missing poster has visible fallback', (tester) async {
     final movie = Movie.fromJson({'id': 1, 'title': 'No poster'});

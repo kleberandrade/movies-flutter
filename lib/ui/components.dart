@@ -15,7 +15,15 @@ class Poster extends StatelessWidget {
       borderRadius: BorderRadius.circular(14),
       child: AspectRatio(
         aspectRatio: 2 / 3,
-        child: movie.posterUrl == null
+        child: movie.posterAsset != null
+            ? SvgPicture.asset(
+                movie.posterAsset!,
+                fit: BoxFit.cover,
+                excludeFromSemantics: true,
+                placeholderBuilder: (context) => fallback,
+                errorBuilder: (context, error, stack) => fallback,
+              )
+            : movie.posterUrl == null
             ? fallback
             : Image.network(
                 movie.posterUrl!,

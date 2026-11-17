@@ -12,7 +12,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/alem-da-orbita.svg"
   },
   {
     "id": 2,
@@ -27,7 +28,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/o-ultimo-farol.svg"
   },
   {
     "id": 3,
@@ -42,7 +44,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/jardim-de-domingo.svg"
   },
   {
     "id": 4,
@@ -57,7 +60,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/entre-montanhas.svg"
   },
   {
     "id": 5,
@@ -72,7 +76,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/cidade-em-movimento.svg"
   },
   {
     "id": 6,
@@ -87,7 +92,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/cartas-do-amanha.svg"
   },
   {
     "id": 7,
@@ -102,7 +108,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/mare-de-inverno.svg"
   },
   {
     "id": 8,
@@ -117,7 +124,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/a-casa-das-estrelas.svg"
   },
   {
     "id": 9,
@@ -132,7 +140,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/pequenas-viagens.svg"
   },
   {
     "id": 10,
@@ -147,7 +156,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/depois-da-chuva.svg"
   },
   {
     "id": 11,
@@ -162,7 +172,8 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/o-som-do-silencio.svg"
   },
   {
     "id": 12,
@@ -177,6 +188,7 @@
       }
     ],
     "original_language": "pt",
-    "tagline": "Toda história abre um novo caminho."
+    "tagline": "Toda história abre um novo caminho.",
+    "poster_asset": "assets/posters/horizonte-azul.svg"
   }
 ]

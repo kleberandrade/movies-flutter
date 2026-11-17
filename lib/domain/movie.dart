@@ -7,6 +7,7 @@ class Movie {
     required this.rating,
     this.releaseDate,
     this.posterPath,
+    this.posterAsset,
     this.runtime,
     required this.genres,
     required this.language,
@@ -16,14 +17,26 @@ class Movie {
   final String title, overview, language, tagline;
   final double rating;
   final DateTime? releaseDate;
-  final String? posterPath;
+  final String? posterPath, posterAsset;
   final int? runtime;
   final List<String> genres;
   String? get posterUrl =>
       posterPath == null ? null : 'https://image.tmdb.org/t/p/w500$posterPath';
   String get year => releaseDate?.year.toString() ?? 'Sem data';
 
-  factory Movie.fromJson(Map<String, dynamic> json) {
+  factory Movie.fromJson(Map<String, dynamic> json) => Movie._parse(json);
+
+  /// Only trusted local fixtures may select a bundled poster.
+  factory Movie.fromDemoJson(Map<String, dynamic> json) =>
+      Movie._parse(json, demo: true);
+
+  static Movie _parse(Map<String, dynamic> json, {bool demo = false}) {
+    final asset = demo ? json['poster_asset'] : null;
+    if (asset != null &&
+        (asset is! String ||
+            !RegExp(r'^assets/posters/[a-z0-9-]+\.svg$').hasMatch(asset))) {
+      throw const FormatException('Invalid bundled poster');
+    }
     final id = json['id'];
     final title = json['title'];
     final rating = json['vote_average'] ?? 0;
@@ -64,6 +77,7 @@ class Movie {
       overview: optionalText(json, 'overview'),
       rating: rating.toDouble(),
       posterPath: path as String?,
+      posterAsset: asset as String?,
       releaseDate: parsedDate,
       runtime: runtime as int?,
       genres: List.unmodifiable(genres),
