@@ -1,90 +1,76 @@
-# Movies Flutter
+# Movies
 
-[![Language: Dart](https://img.shields.io/badge/Language-Dart-0175C2)](https://github.com/kleberandrade/movies-flutter/blob/main/pubspec.yaml)
-[![Framework: Flutter](https://img.shields.io/badge/Framework-Flutter-02569B)](https://github.com/kleberandrade/movies-flutter/blob/main/pubspec.yaml)
+[![Flutter 3.41.9](https://img.shields.io/badge/Flutter-3.41.9-02569B?logo=flutter)](https://flutter.dev)
+[![Dart 3.11](https://img.shields.io/badge/Dart-3.11-0175C2?logo=dart)](pubspec.yaml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Flutter](https://github.com/kleberandrade/movies-flutter/actions/workflows/flutter.yml/badge.svg?branch=main)](https://github.com/kleberandrade/movies-flutter/actions/workflows/flutter.yml)
 
-Flutter classroom movie-list application using the TMDb API.
+![Compiled Web demo](docs/screenshots/catalog-desktop.jpg)
 
-## Getting started
+A Flutter classroom movie explorer by Kleber de Oliveira Andrade. Browse a responsive catalog, search titles, load more results and open a movie's synopsis, year, score, runtime, genres and original language. The interface is in Portuguese.
 
-- Select a Flutter release whose bundled Dart SDK satisfies the manifest constraint, then run the commands below from the repository root.
+The default **sample mode** uses twelve original fictional movies, ratings and local illustrations. It works without a key or TMDB requests. These are teaching fixtures, not real movies or API results.
+
+## Requirements and setup
+
+Tested toolchain: **Flutter 3.41.9 / Dart 3.11.5** (`.fvmrc`). Install that Flutter release; FVM is optional. Chrome is required for Web development. Android needs an SDK/JDK and accepted licenses; iOS needs macOS and Xcode. Do not accept terms on behalf of another person.
 
 ```sh
-flutter pub get
-flutter run
+git clone https://github.com/kleberandrade/movies-flutter.git
+cd movies-flutter
+flutter pub get --enforce-lockfile
+flutter run -d chrome
 ```
 
-- If the app depends on Firebase or another external service, configure your own service project using the dependencies and original notes; credentials are not supplied by this guide.
+Try searching `farol`, open **O último farol**, return to the catalog, clear the search and use **Carregar mais filmes**. Search `xyz` to see the empty state. The grid-size control changes card density. **Sobre e créditos** explains sample data and TMDB attribution.
 
-## Recorded requirements
+## Optional live TMDB mode
 
-- Dart SDK constraint from [`pubspec.yaml`](https://github.com/kleberandrade/movies-flutter/blob/main/pubspec.yaml): `>=2.7.0 <3.0.0`.
+Obtain your own **API Read Access Token** in your TMDB account and review the [official terms and attribution requirements](https://developer.themoviedb.org/docs/faq). No credential is supplied or read from another project. The legacy token in Git history must be revoked/rotated by its owner.
 
-## Repository map
+Copy `config/example.json` to ignored `config/local.json`, set `DEMO_MODE` to `"false"` and enter your own token in `TMDB_TOKEN`. Then:
 
-- [lib](https://github.com/kleberandrade/movies-flutter/tree/main/lib)
-- [test](https://github.com/kleberandrade/movies-flutter/tree/main/test)
-- [android](https://github.com/kleberandrade/movies-flutter/tree/main/android)
-- [ios](https://github.com/kleberandrade/movies-flutter/tree/main/ios)
+```sh
+flutter run -d chrome --dart-define-from-file=config/local.json
+# Or use --dart-define=DEMO_MODE=false --dart-define=TMDB_TOKEN=YOUR_OWN_READ_TOKEN
+```
 
-## Validation status
+Live mode requests popular movies, title search and details in `pt-BR`. API/network errors offer retry and never silently switch to sample results. Already-loaded pages survive a pagination error. Poster failures show a labeled local illustration.
 
-This update documents the tracked source and project metadata. It does not certify a successful build, device test or compatibility with a current toolchain. Follow any project-specific validation instructions in the original material.
+External build configuration is **not secret storage**: tokens embedded in a browser/mobile client can be extracted. Use an authenticated backend for credentials in a distributed production service. Do not commit local configuration or tokens. See [architecture and migration](docs/architecture.md) for security, state ownership and current scope.
 
-## License and attribution
+## Tests and reproducible Web build
 
-No standalone repository-wide license file was identified in this review. Preserve the original credits and any component-specific licenses; this documentation update grants no additional rights.
+```sh
+flutter pub get --enforce-lockfile
+dart format --output=none --set-exit-if-changed lib test
+flutter analyze --no-pub
+flutter test --no-pub --coverage
+flutter build web --no-pub --release --no-web-resources-cdn
+python3 -m http.server 8784 --directory build/web --bind 127.0.0.1
+```
 
----
+Open `http://127.0.0.1:8784`. The Web build defaults to sample mode and bundles its renderer resources. The build needs package/Flutter artifacts downloaded during setup; it is not an offline dependency installation. `pubspec.lock` is committed and CI pins Flutter 3.41.9, runs formatting/analyzer/tests and builds the same Web artifact on `main` pushes and pull requests. CI does not deploy or publish packages.
 
-## Original project material
+Tests use local JSON and an injected Dio adapter: parsing and malformed data, pagination/search, auth/request parameters, HTTP errors/timeouts, stale responses, duplicate IDs, retry, disposal, widget navigation, empty states and large text. They do not require or prove a live TMDB integration. Coverage output is generated locally; no coverage percentage is advertised.
 
-# Filmes (Movies)
+Native commands: `flutter build apk --debug` and `flutter build ios --simulator --debug`. Store signing and physical-device validation are outside this classroom migration. See [verified validation results and limits](docs/validation.md).
 
-Aplicativo de lista de filmes utilizando a API do [TMDb](https://www.themoviedb.org/?language=pt-BR) criado para disciplina de Programação Mobile, criado por Kleber de Oliveira Andrade
+## Project map
 
-Tutorial de criação deste app: [clique aqui](https://kleberandrade.medium.com/criando-um-aplicativo-em-flutter-para-consumir-uma-api-de-filmes-tmdb-2b5a9982bfcd)
+- `lib/domain`: immutable movie/page values and JSON boundary validation.
+- `lib/data`: TMDB transport, safe failures, repository contract and sample repository.
+- `lib/state`: catalog search/pagination ownership and stale-response protection.
+- `lib/ui`: catalog, details, reusable poster/error/credits components.
+- `assets/fixtures`: fictional sample catalog; `test`: deterministic behavior tests.
+- `android`, `ios`, `web`: Flutter platform scaffolds.
 
-<p align="center">
-    <img src="https://miro.medium.com/max/334/1*QWNFydDZqp2Y12UDsRROHQ.png" width="250"/>
-    <img src="https://miro.medium.com/max/334/1*zk7ckxu63R3zKAGdUdUAbg.png" width="250"/>
-    <img src="https://miro.medium.com/max/334/1*SpoH2wRV3jNAuCk1Hz4EzQ.png" width="250"/>
-</p>
+The old Dart 2 constructors and controllers have been replaced; this is an application, not a published library. Migration rationale and glossary are in [architecture](docs/architecture.md). Implementation decisions and tool limitations are in the [work log](docs/work-log.md).
 
-## Como clonar o projeto
+## Classroom material and credits
 
-*   Faça um fork do projeto (precisa ter uma conta no github)
-*   Abra o terminal do Visual Studio Code
-*   Acesse a pasta onde deseja salvar o aplicativo e digite: git clone *link_do_projeto_no_seu_github* **movies**
-*   Clique em File --> Open e abra o projeto
-*   Não se esqueça de abrir o arquivo *pubspec.yaml* e salvar (CTRL + S) o arquivo para que os plugins sejam baixados 
+Original tutorial: [Criando um aplicativo em Flutter para consumir uma API de Filmes (TMDb)](https://kleberandrade.medium.com/criando-um-aplicativo-em-flutter-para-consumir-uma-api-de-filmes-tmdb-2b5a9982bfcd). [Editorial revision record](docs/medium-update.pt-BR.md). [Archived 2020 notes, screenshots and exercises](docs/classroom-2020.md) preserve the original teaching context; follow this README for current setup.
 
-## Desafio para aula
+Suggested next exercises: add a persistent watchlist with tests, explore alternative accessible pagination, or add a new detail field by extending fixtures, parser and widgets together. Do not add dependencies solely to replace working standard Flutter components.
 
-*   [ ] Adicionar um [ícone](https://pub.dev/packages/flutter_launcher_icons) e uma [tela de splash](https://pub.dev/packages/custom_splash) para o aplicativo;
-*   [ ] Na MovieDetailPage adicionar pelo menos 2 novas informaçoes;
-*   [ ] Criar um [IconButton na AppBar](https://medium.com/flutterpub/playing-with-appbar-in-flutter-3a8abd9b982a) que altere o crossAxisCount do GridView entre 2 e 3. Nao se esqueçam do setState;
-*   [ ] Trocar a lógica do ScrollController por [InfiniteScrollPagination](https://pub.dev/packages/infinite_scroll_pagination);
-*   [ ] Utilizar [FancyShimmerImage](https://pub.dev/packages/fancy_shimmer_image) para os posters (MoviePage) e banners (MovieDetailPage);
-
-## Licença
-
-    Copyright 2020 Kleber de Oliveira Andrade
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+Code and original sample content: **MIT**, copyright 2020 Kleber de Oliveira Andrade; see [LICENSE](LICENSE). TMDB images, data and trademarks have separate terms. The bundled approved TMDB logo is attributed in the app's About dialog. **This product uses the TMDB API but is not endorsed or certified by TMDB.** [The Movie Database](https://www.themoviedb.org).
